@@ -1,0 +1,28 @@
+.wrapper {
+    background-color: #ffffff;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 23px 23px 0 23px;
+}
+
+.title {
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 16px;
+}
+
+.period {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 14px;
+}
