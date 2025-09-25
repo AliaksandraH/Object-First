@@ -1,15 +1,12 @@
 import Charts from "../../components/Charts/Charts";
-import ServerTable from "../../components/ServerTable/ServerTable";
+import ServerTableWrapper from "../../components/ServerTableWrapper/ServerTableWrapper";
 import styles from "./Dashboard.module.css";
 
 const Dashboard = () => {
     return (
         <main className={styles.dashboardContainer}>
             <Charts />
-            <div>
-                <h2>Virtual machines</h2>
-                <ServerTable />
-            </div>
+            <ServerTableWrapper />
         </main>
     );
 };
