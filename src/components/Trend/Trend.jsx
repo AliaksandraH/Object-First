@@ -19,7 +19,7 @@ const Trend = () => {
     const data = useMemo(
         () =>
             virtualMachines.map((vm) => ({
-                name: parseFloat(vm.CPU),
+                name: parseFloat(vm.cpu),
                 uv: parseFloat(vm.memory),
             })),
         [virtualMachines]
