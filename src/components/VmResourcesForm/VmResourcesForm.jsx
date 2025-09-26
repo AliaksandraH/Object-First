@@ -75,7 +75,10 @@ const VmResourcesForm = ({
                 <RamSlider value={ram} />
             </div>
             <div className={modalStyles.btnWrapper}>
-                <button className={styles.btnBack} onClick={() => setStep(0)}>
+                <button
+                    className={modalStyles.btnBack}
+                    onClick={() => setStep(0)}
+                >
                     Back
                 </button>
                 <button

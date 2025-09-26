@@ -1,0 +1,52 @@
+.card {
+    background: #fff7ff;
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 0;
+    min-height: 32px;
+    border-bottom: 1px solid #ccc4ce4d;
+    padding: 8px;
+}
+
+.label {
+    width: 80px;
+    color: #4a454e;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+}
+
+.value {
+    max-width: 220px;
+    color: #1e1a20;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.editBtn {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    background: none;
+    border: none;
+    margin-top: 10px;
+}
+
+.editBtn img {
+    width: 18px;
+    height: 18px;
+}

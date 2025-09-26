@@ -64,9 +64,12 @@ const virtualMachinesSlice = createSlice({
         closeModal: (state) => {
             state.isShowModal = false;
         },
+        addVM: (state, action) => {
+            state.virtualMachines = [...state.virtualMachines, action.payload];
+        },
     },
 });
 
-export const { openModal, closeModal } = virtualMachinesSlice.actions;
+export const { openModal, closeModal, addVM } = virtualMachinesSlice.actions;
 
 export default virtualMachinesSlice.reducer;

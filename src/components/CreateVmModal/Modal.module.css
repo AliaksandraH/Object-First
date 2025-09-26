@@ -43,7 +43,6 @@
 }
 
 .btn {
-    width: 78px;
     height: 40px;
     padding: 10px 24px;
     background: #1d1b201f;
@@ -70,4 +69,18 @@
 
 .btn.active p {
     color: #fff;
+}
+
+.btnBack {
+    color: #5f3196;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    text-align: center;
+    vertical-align: middle;
 }

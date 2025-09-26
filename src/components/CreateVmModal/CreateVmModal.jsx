@@ -1,7 +1,11 @@
 import ReactDOM from "react-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { closeModal } from "../../features/virtualMachines/virtualMachinesSlice";
+import {
+    closeModal,
+    addVM,
+} from "../../features/virtualMachines/virtualMachinesSlice";
+import { nanoid } from "nanoid";
 import AsideModal from "../AsideModal/AsideModal";
 import VmNameInput from "../VmNameInput/VmNameInput";
 import VmResourcesForm from "../VmResourcesForm/VmResourcesForm";
@@ -18,6 +22,66 @@ const CreateVmModal = () => {
     const [cpu, setCpu] = useState(0);
     const [ram, setRam] = useState(0);
     const [isEnabledCpu, setIsEnabledCpu] = useState(false);
+
+    useEffect(() => {
+        const body = document.body;
+        if (isOpen) {
+            body.style.overflow = "hidden";
+        } else {
+            body.style.overflow = "auto";
+        }
+        return () => {
+            body.style.overflow = "auto";
+        };
+    }, [isOpen]);
+
+    const onClose = () => {
+        dispatch(closeModal());
+    };
+
+    if (!isOpen) return null;
+
+    const createVm = () => {
+        const id = nanoid();
+        const state = Math.random() < 0.5 ? "stopped" : "running";
+        const hostNumber = Math.floor(Math.random() * 10) + 20;
+        const host = `43C07-${hostNumber}`;
+        const hours = Math.floor(Math.random() * 24);
+        const minutes = Math.floor(Math.random() * 60);
+        const uptime = `${hours}:${minutes.toString().padStart(2, "0")}:00:00`;
+        const alertTypes = ["Important", "Critical", "Moderate", "All good"];
+        const randomType =
+            alertTypes[Math.floor(Math.random() * alertTypes.length)];
+        const alerts =
+            randomType === "All good"
+                ? { type: randomType, count: 0 }
+                : {
+                      type: randomType,
+                      count: Math.floor(Math.random() * 10) + 1,
+                  };
+
+        const newVm = {
+            id,
+            name,
+            state,
+            host,
+            cpu: cpu,
+            memory: ram,
+            uptime,
+            alerts,
+        };
+        dispatch(addVM(newVm));
+        resetData();
+        dispatch(closeModal());
+    };
+
+    const resetData = () => {
+        setStep(0);
+        setName("");
+        setCpu(0);
+        setRam(0);
+        setIsEnabledCpu(false);
+    };
 
     const steps = [
         {
@@ -42,26 +106,20 @@ const CreateVmModal = () => {
                 />
             ),
         },
-        { step: 3, name: "Ready to complete", component: <VmConfirmation /> },
+        {
+            step: 3,
+            name: "Ready to complete",
+            component: (
+                <VmConfirmation
+                    name={name}
+                    cpu={cpu}
+                    ram={ram}
+                    setStep={setStep}
+                    createVm={createVm}
+                />
+            ),
+        },
     ];
-
-    useEffect(() => {
-        const body = document.body;
-        if (isOpen) {
-            body.style.overflow = "hidden";
-        } else {
-            body.style.overflow = "auto";
-        }
-        return () => {
-            body.style.overflow = "auto";
-        };
-    }, [isOpen]);
-
-    const onClose = () => {
-        dispatch(closeModal());
-    };
-
-    if (!isOpen) return null;
 
     return ReactDOM.createPortal(
         <div className={styles.overlay}>
