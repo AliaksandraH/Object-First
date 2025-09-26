@@ -20,6 +20,7 @@
     box-sizing: border-box;
     position: relative;
     z-index: 2;
+    color: #1d1b20;
 }
 
 input::placeholder {
