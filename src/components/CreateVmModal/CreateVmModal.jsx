@@ -59,11 +59,11 @@ const CreateVmModal = () => {
         const hours = Math.floor(Math.random() * 24);
         const minutes = Math.floor(Math.random() * 60);
         const uptime = `${hours}:${minutes.toString().padStart(2, "0")}:00:00`;
-        const alertTypes = ["Important", "Critical", "Moderate", "All good"];
+        const alertTypes = ["Important", "Critical", "Moderate", "Good"];
         const randomType =
             alertTypes[Math.floor(Math.random() * alertTypes.length)];
         const alerts =
-            randomType === "All good"
+            randomType === "Good"
                 ? { type: randomType, count: 0 }
                 : {
                       type: randomType,

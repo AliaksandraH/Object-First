@@ -18,6 +18,8 @@
     outline: none;
     background: transparent;
     box-sizing: border-box;
+    position: relative;
+    z-index: 2;
 }
 
 input::placeholder {
@@ -36,6 +38,7 @@ input::placeholder {
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 0.4px;
+    caret-color: rgb(0, 0, 0);
 }
 
 .labelFloat {
@@ -85,4 +88,18 @@ input::placeholder {
     letter-spacing: 0.4px;
     margin-top: 4px;
     margin-left: 15px;
+}
+
+.hiddenWrapper {
+    position: absolute;
+    left: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    z-index: 1;
+}
+
+.hidden {
+    color: #5e319600;
+    margin-right: 4px;
 }

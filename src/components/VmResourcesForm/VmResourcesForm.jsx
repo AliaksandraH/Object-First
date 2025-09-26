@@ -32,6 +32,11 @@ const VmResourcesForm = ({
         }
     }, [cpu, ram, errorCpu, errorRam]);
 
+    useEffect(() => {
+        setErrorRam(!(ram >= 0 && ram < 51));
+        setErrorCpu(!(cpu >= 0 && cpu < 13));
+    }, [ram, cpu]);
+
     return (
         <section className={modalStyles.vmNameInput}>
             <div className={modalStyles.wrapper}>

@@ -18,13 +18,14 @@ const Trend = () => {
 
     const data = useMemo(
         () =>
-            virtualMachines.map((vm) => ({
-                name: parseFloat(vm.cpu),
-                uv: parseFloat(vm.memory),
-            })),
+            [...virtualMachines]
+                .sort((a, b) => parseFloat(a.cpu) - parseFloat(b.cpu))
+                .map((vm) => ({
+                    name: parseFloat(vm.cpu),
+                    uv: parseFloat(vm.memory),
+                })),
         [virtualMachines]
     );
-
     return (
         <section className={wrapper}>
             <div className={header}>
@@ -54,8 +55,11 @@ const Trend = () => {
                         />
                     </linearGradient>
                 </defs>
-                <XAxis dataKey="name" /> {/* ось X */}
-                <YAxis /> {/* ось Y */}
+                <XAxis
+                    dataKey="name"
+                    tickFormatter={(value) => `${value}СPU`}
+                />
+                <YAxis tickFormatter={(value) => `${value}GB`} />
                 <CartesianGrid strokeDasharray="1 0" />
                 <Tooltip />
                 <Area

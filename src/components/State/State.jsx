@@ -5,6 +5,7 @@ import CustomChartLabel from "../CustomChartLabel/CustomChartLabel";
 import styles from "./State.module.css";
 
 const { wrapper, title, legendValue, legendName } = styles;
+const COLORS = ["#DC3545", "#459E74"];
 
 function State() {
     const virtualMachines = useSelector((state) => state.vm.virtualMachines);
@@ -33,14 +34,16 @@ function State() {
                     innerRadius={60}
                     outerRadius={85}
                 >
-                    {data.map((entry) => (
+                    {data.map((entry, idx) => (
                         <Cell
                             key={entry.name}
                             fill={
-                                entry.value ===
-                                Math.min(...data.map((d) => d.value))
-                                    ? "#DC3545"
-                                    : "#459E74"
+                                data[0].value === data[1].value
+                                    ? COLORS[idx]
+                                    : entry.value ===
+                                      Math.min(...data.map((d) => d.value))
+                                    ? COLORS[0]
+                                    : COLORS[1]
                             }
                         />
                     ))}

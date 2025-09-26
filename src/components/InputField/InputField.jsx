@@ -41,6 +41,11 @@ const InputField = ({
                     onBlur={() => setFocused(false)}
                     placeholder={label}
                 />
+                {value > 0 && type === "number" && focused && (
+                    <div className={styles.hiddenWrapper}>
+                        <span className={styles.hidden}>{value}</span>/{max}
+                    </div>
+                )}
                 <label
                     className={`${styles.label} ${
                         focused || value ? styles.labelFloat : ""

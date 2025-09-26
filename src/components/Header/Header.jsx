@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Logo from "/images/logo.svg";
+import Vector from "/images/vector.svg";
 import Notifications from "/images/notifications.svg";
 import Avatar from "/images/avatar.svg";
 import styles from "./Header.module.css";
@@ -12,6 +13,7 @@ const {
     navBarBtns,
     notificationsBtn,
     avatarBtn,
+    link,
 } = styles;
 
 const Header = () => {
@@ -33,9 +35,12 @@ const Header = () => {
                 </NavLink>
                 <NavLink
                     to="/help"
-                    className={({ isActive }) => (isActive ? activeLink : "")}
+                    className={({ isActive }) =>
+                        isActive ? `${link} ${activeLink}` : link
+                    }
                 >
-                    Help
+                    <span>Help</span>
+                    <img src={Vector} alt="vector" />
                 </NavLink>
             </nav>
             <section className={navBarBtns}>

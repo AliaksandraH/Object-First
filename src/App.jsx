@@ -1,8 +1,11 @@
-import { Routes, Route, Link } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
-import Dashboard from "./pages/Dashboard/Dashboard";
-import Events from "./pages/Events/Events";
 import "./App.css";
+
+const Dashboard = React.lazy(() => import("./pages/Dashboard/Dashboard"));
+const Events = React.lazy(() => import("./pages/Events/Events"));
+const Help = React.lazy(() => import("./pages/Help/Help"));
 
 function App() {
     return (
@@ -11,6 +14,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/events" element={<Events />} />
+                <Route path="/help" element={<Help />} />
             </Routes>
         </>
     );
