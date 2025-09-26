@@ -1,0 +1,113 @@
+.sliderWrapper {
+    width: 100%;
+    position: relative;
+}
+
+.labels {
+    display: flex;
+    justify-content: space-between;
+    color: #4a454e;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.4px;
+    text-align: center;
+    background: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.trackBar {
+    position: relative;
+    height: 4px;
+    margin-bottom: 12px;
+}
+
+.trackBase {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 8px;
+    height: 4px;
+    background: #f6eef6;
+    z-index: 1;
+}
+
+.trackGreen {
+    position: absolute;
+    left: 33%;
+    width: 33%;
+    top: 8px;
+    height: 4px;
+    background: #3ac140;
+    z-index: 3;
+}
+
+.trackYellow {
+    position: absolute;
+    left: 64%;
+    width: 36%;
+    top: 8px;
+    height: 4px;
+    background: #f4de19;
+    z-index: 2;
+}
+
+.thumb {
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    width: 25px;
+    height: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.thumb .vector {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 25px;
+    height: 18px;
+}
+
+.thumb .indicator {
+    width: 10px;
+    height: 15px;
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 25px;
+    height: 18px;
+}
+
+.thumbLabel {
+    color: #5f3196;
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    left: 0;
+    background: #fff;
+    z-index: 5;
+}
+
+.recommended {
+    text-align: center;
+    font-size: 14px;
+    color: #4a454e;
+    margin-top: 15px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    text-align: center;
+}
+
+.line {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 124px;
+    height: 46px;
+    top: 0px;
+    left: 120px;
+}

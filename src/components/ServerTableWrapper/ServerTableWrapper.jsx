@@ -1,9 +1,11 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { openModal } from "../../features/virtualMachines/virtualMachinesSlice";
 import ServerTable from "../../components/ServerTable/ServerTable";
 import Plus from "/images/plus.svg";
 import styles from "./ServerTableWrapper.module.css";
 
 const ServerTableWrapper = () => {
+    const dispatch = useDispatch();
     const virtualMachines = useSelector((state) => state.vm.virtualMachines);
 
     return (
@@ -15,7 +17,11 @@ const ServerTableWrapper = () => {
                         {virtualMachines.length}
                     </div>
                 </div>
-                <button type="button" className={styles.vmBtn}>
+                <button
+                    type="button"
+                    className={styles.vmBtn}
+                    onClick={() => dispatch(openModal())}
+                >
                     <img src={Plus} alt="plus" />
                     <span>New</span>
                 </button>

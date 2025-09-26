@@ -55,26 +55,18 @@ const virtualMachinesSlice = createSlice({
                 alerts: { type: "Critical", count: 1 },
             },
         ],
-        value: 0,
-        sum: 0,
+        isShowModal: false,
     },
     reducers: {
-        increment: (state) => {
-            state.value += 1;
+        openModal: (state) => {
+            state.isShowModal = true;
         },
-        incrementSum: (state) => {
-            state.sum += 1;
-        },
-        decrement: (state) => {
-            state.value -= 1;
-        },
-        incrementByAmount: (state, action) => {
-            state.value += action.payload;
+        closeModal: (state) => {
+            state.isShowModal = false;
         },
     },
 });
 
-export const { increment, decrement, incrementByAmount, incrementSum } =
-    virtualMachinesSlice.actions;
+export const { openModal, closeModal } = virtualMachinesSlice.actions;
 
 export default virtualMachinesSlice.reducer;

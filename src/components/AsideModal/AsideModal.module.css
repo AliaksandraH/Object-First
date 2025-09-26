@@ -1,0 +1,63 @@
+.cover {
+    width: 244px;
+    height: 100%;
+    background: #5f3196 url("/images/illustration.svg") no-repeat;
+    background-position: bottom center;
+    background-size: contain;
+    box-sizing: border-box;
+    color: #ffffff;
+    padding: 30px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #ccc4ce;
+}
+
+.title .welcome {
+    font-size: 14px;
+    letter-spacing: 0.25px;
+    color: #e9e0eb;
+}
+
+.title .wizard {
+    font-family: Roboto;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 22px;
+    line-height: 28px;
+    letter-spacing: 0px;
+}
+
+.steps {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    color: #e9e0eb;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.steps .active {
+    color: #ffffff;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+}
