@@ -1,5 +1,5 @@
 const Events = () => {
-    return <></>;
+    return <main></main>;
 };
 
 export default Events;

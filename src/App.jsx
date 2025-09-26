@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
-import "./App.css";
 
 const Dashboard = React.lazy(() => import("./pages/Dashboard/Dashboard"));
 const Events = React.lazy(() => import("./pages/Events/Events"));

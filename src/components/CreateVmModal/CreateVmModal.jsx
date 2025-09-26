@@ -51,34 +51,39 @@ const CreateVmModal = () => {
 
     if (!isOpen) return null;
 
-    const createVm = () => {
-        const id = nanoid();
-        const state = Math.random() < 0.5 ? "stopped" : "running";
+    const generateState = () => (Math.random() < 0.5 ? "stopped" : "running");
+
+    const generateHost = () => {
         const hostNumber = Math.floor(Math.random() * 10) + 20;
-        const host = `43C07-${hostNumber}`;
+        return `43C07-${hostNumber}`;
+    };
+
+    const generateUptime = () => {
         const hours = Math.floor(Math.random() * 24);
         const minutes = Math.floor(Math.random() * 60);
-        const uptime = `${hours}:${minutes.toString().padStart(2, "0")}:00:00`;
+        return `${hours}:${minutes.toString().padStart(2, "0")}:00:00`;
+    };
+
+    const generateAlerts = () => {
         const alertTypes = ["Important", "Critical", "Moderate", "Good"];
         const randomType =
             alertTypes[Math.floor(Math.random() * alertTypes.length)];
-        const alerts =
-            randomType === "Good"
-                ? { type: randomType, count: 0 }
-                : {
-                      type: randomType,
-                      count: Math.floor(Math.random() * 10) + 1,
-                  };
+        return randomType === "Good"
+            ? { type: randomType, count: 0 }
+            : { type: randomType, count: Math.floor(Math.random() * 10) + 1 };
+    };
 
+    const createVm = () => {
+        const id = nanoid();
         const newVm = {
             id,
             name,
-            state,
-            host,
-            cpu: cpu,
+            state: generateState(),
+            host: generateHost(),
+            cpu,
             memory: ram,
-            uptime,
-            alerts,
+            uptime: generateUptime(),
+            alerts: generateAlerts(),
         };
         dispatch(addVM(newVm));
         resetData();

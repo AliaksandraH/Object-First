@@ -1,5 +1,5 @@
 const Help = () => {
-    return <></>;
+    return <main></main>;
 };
 
 export default Help;

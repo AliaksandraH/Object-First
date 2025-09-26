@@ -5,51 +5,46 @@ import Notifications from "/images/notifications.svg";
 import Avatar from "/images/avatar.svg";
 import styles from "./Header.module.css";
 
-const {
-    header,
-    logo,
-    navLinks,
-    activeLink,
-    navBarBtns,
-    notificationsBtn,
-    avatarBtn,
-    link,
-} = styles;
-
 const Header = () => {
     return (
-        <header className={header}>
-            <img src={Logo} alt="logo" className={logo} />
-            <nav className={navLinks}>
+        <header className={styles.header}>
+            <img src={Logo} alt="logo" className={styles.logo} />
+            <nav className={styles.navLinks}>
                 <NavLink
                     to="/"
-                    className={({ isActive }) => (isActive ? activeLink : "")}
+                    className={({ isActive }) =>
+                        isActive ? styles.activeLink : ""
+                    }
                 >
                     Dashboard
                 </NavLink>
                 <NavLink
                     to="/events"
-                    className={({ isActive }) => (isActive ? activeLink : "")}
+                    className={({ isActive }) =>
+                        isActive ? styles.activeLink : ""
+                    }
                 >
                     Events
                 </NavLink>
                 <NavLink
                     to="/help"
                     className={({ isActive }) =>
-                        isActive ? `${link} ${activeLink}` : link
+                        isActive
+                            ? `${styles.link} ${styles.activeLink}`
+                            : styles.link
                     }
                 >
                     <span>Help</span>
                     <img src={Vector} alt="vector" />
                 </NavLink>
             </nav>
-            <section className={navBarBtns}>
+            <section className={styles.navBarBtns}>
                 <img
                     src={Notifications}
                     alt="notifications"
-                    className={notificationsBtn}
+                    className={styles.notificationsBtn}
                 />
-                <img src={Avatar} alt="avatar" className={avatarBtn} />
+                <img src={Avatar} alt="avatar" className={styles.avatarBtn} />
             </section>
         </header>
     );

@@ -18,27 +18,22 @@ const AsideModal = ({ step }) => {
                     <p>General Settings</p>
                 </div>
             )}
-            {step.step === 2 && (
+
+            {(step.step === 2 || step.step === 3) && (
                 <div className={styles.steps}>
                     <div className={styles.wrapper}>
                         <img src={Check} alt="check" />
                         <p>Virtual Machine Name</p>
                     </div>
                     <div className={styles.wrapper}>
-                        <img src={Dash} alt="dash" />
-                        <p className={styles.active}> General Settings</p>
-                    </div>
-                </div>
-            )}
-            {step.step === 3 && (
-                <div className={styles.steps}>
-                    <div className={styles.wrapper}>
-                        <img src={Check} alt="check" />
-                        <p>Virtual Machine Name</p>
-                    </div>
-                    <div className={styles.wrapper}>
-                        <img src={Check} alt="check" />
-                        <p>General Settings</p>
+                        {step.step === 2 ? (
+                            <img src={Dash} alt="dash" />
+                        ) : (
+                            <img src={Check} alt="check" />
+                        )}
+                        <p className={step.step === 2 ? styles.active : ""}>
+                            General Settings
+                        </p>
                     </div>
                 </div>
             )}
