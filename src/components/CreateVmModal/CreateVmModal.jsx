@@ -6,6 +6,7 @@ import {
     addVM,
 } from "../../features/virtualMachines/virtualMachinesSlice";
 import { nanoid } from "nanoid";
+import WarningModal from "../WarningModal/WarningModal";
 import AsideModal from "../AsideModal/AsideModal";
 import VmNameInput from "../VmNameInput/VmNameInput";
 import VmResourcesForm from "../VmResourcesForm/VmResourcesForm";
@@ -17,6 +18,7 @@ const CreateVmModal = () => {
     const dispatch = useDispatch();
     const isOpen = useSelector((state) => state.vm.isShowModal);
 
+    const [isShowWarning, setIsShowWarning] = useState(false);
     const [step, setStep] = useState(0);
     const [name, setName] = useState("");
     const [cpu, setCpu] = useState(0);
@@ -35,8 +37,16 @@ const CreateVmModal = () => {
         };
     }, [isOpen]);
 
-    const onClose = () => {
-        dispatch(closeModal());
+    const onShowWarningModal = () => {
+        if (name.length > 0 || cpu > 0 || ram > 0) {
+            setIsShowWarning(true);
+        } else {
+            resetData();
+        }
+    };
+
+    const onCloseModal = () => {
+        resetData();
     };
 
     if (!isOpen) return null;
@@ -72,7 +82,6 @@ const CreateVmModal = () => {
         };
         dispatch(addVM(newVm));
         resetData();
-        dispatch(closeModal());
     };
 
     const resetData = () => {
@@ -81,6 +90,8 @@ const CreateVmModal = () => {
         setCpu(0);
         setRam(0);
         setIsEnabledCpu(false);
+        setIsShowWarning(false);
+        dispatch(closeModal());
     };
 
     const steps = [
@@ -127,9 +138,18 @@ const CreateVmModal = () => {
                 className={styles.modal}
                 onClick={(e) => e.stopPropagation()}
             >
+                {isShowWarning && (
+                    <WarningModal
+                        setIsShowWarning={setIsShowWarning}
+                        onCloseModal={onCloseModal}
+                    />
+                )}
                 <header className={styles.header}>
                     <p className={styles.title}>New virtual machine</p>
-                    <button className={styles.closeButton} onClick={onClose}>
+                    <button
+                        className={styles.closeButton}
+                        onClick={onShowWarningModal}
+                    >
                         <img src={ToggleableImg} alt="close" />
                     </button>
                 </header>

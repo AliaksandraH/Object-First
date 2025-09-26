@@ -1,0 +1,66 @@
+.wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffeaea;
+    border-radius: 28px;
+    padding: 32px;
+    width: clamp(280px, 312px, 560px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    z-index: 9999;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.title {
+    color: #1e1a20;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text {
+    color: #4a454e;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    vertical-align: middle;
+}
+
+.actions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.leaveBtn {
+    background: #ba1a1a;
+    color: #fff;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+}
+
+.cancelBtn {
+    background: none;
+    color: #1e1a20;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 10px 24px;
+}

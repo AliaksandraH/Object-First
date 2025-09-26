@@ -17,6 +17,7 @@
     height: 608px;
     border-radius: 8px;
     font-family: "Roboto", sans-serif;
+    position: relative;
 }
 
 .header {
