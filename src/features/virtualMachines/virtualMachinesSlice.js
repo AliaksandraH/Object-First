@@ -21,7 +21,7 @@ const virtualMachinesSlice = createSlice({
                 host: "43C07-27",
                 cpu: "2.24",
                 memory: "21.68",
-                uptime: "4:12:41:09",
+                uptime: "9:12:41:09",
                 alerts: { type: "Critical", count: 3 },
             },
             {
@@ -31,7 +31,7 @@ const virtualMachinesSlice = createSlice({
                 host: "43C07-27",
                 cpu: "6.74",
                 memory: "45.38",
-                uptime: "4:12:41:09",
+                uptime: "9:10:41:09",
                 alerts: { type: "Moderate", count: 5 },
             },
             {
@@ -56,6 +56,12 @@ const virtualMachinesSlice = createSlice({
             },
         ],
         isShowModal: false,
+        sortDirections: {
+            state: "asc",
+            cpu: "asc",
+            memory: "asc",
+            uptime: "asc",
+        },
     },
     reducers: {
         openModal: (state) => {
@@ -67,9 +73,52 @@ const virtualMachinesSlice = createSlice({
         addVM: (state, action) => {
             state.virtualMachines = [...state.virtualMachines, action.payload];
         },
+        sotrByState: (state) => {
+            const dir = state.sortDirections.state === "asc" ? "desc" : "asc";
+            state.sortDirections.state = dir;
+            state.virtualMachines.sort((a, b) => {
+                if (dir === "desc") {
+                    return b.state.localeCompare(a.state);
+                }
+                return a.state.localeCompare(b.state);
+            });
+        },
+        sortByNumericField: (state, action) => {
+            const field = action.payload;
+            const dir = state.sortDirections[field] === "asc" ? "desc" : "asc";
+            state.sortDirections[field] = dir;
+            state.virtualMachines.sort((a, b) => {
+                const valA = parseFloat(a[field]);
+                const valB = parseFloat(b[field]);
+                return dir === "desc" ? valB - valA : valA - valB;
+            });
+        },
+        sotrByUptime: (state) => {
+            const dir = state.sortDirections.uptime === "asc" ? "desc" : "asc";
+            state.sortDirections.uptime = dir;
+            const toSeconds = (str) => {
+                const [d, h, m, s] = str.split(":").map(Number);
+                return ((d * 24 + h) * 60 + m) * 60 + s;
+            };
+            state.virtualMachines.sort((a, b) => {
+                const upA = toSeconds(a.uptime);
+                const upB = toSeconds(b.uptime);
+                if (dir === "desc") {
+                    return upB - upA;
+                }
+                return upA - upB;
+            });
+        },
     },
 });
 
-export const { openModal, closeModal, addVM } = virtualMachinesSlice.actions;
+export const {
+    openModal,
+    closeModal,
+    addVM,
+    sotrByState,
+    sortByNumericField,
+    sotrByUptime,
+} = virtualMachinesSlice.actions;
 
 export default virtualMachinesSlice.reducer;

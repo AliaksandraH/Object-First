@@ -1,4 +1,9 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {
+    sotrByState,
+    sortByNumericField,
+    sotrByUptime,
+} from "../../features/virtualMachines/virtualMachinesSlice";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Arrows from "/images/arrows.svg";
 import Copy from "/images/copy.svg";
@@ -10,11 +15,21 @@ import styles from "./ServerTable.module.css";
 
 const columns = [
     { key: "id", label: "ID", sortable: false },
-    { key: "state", label: "State", sortable: true },
+    { key: "state", label: "State", sortable: true, fun: sotrByState() },
     { key: "host", label: "Host server", sortable: false },
-    { key: "cpu", label: "CPU", sortable: true },
-    { key: "memory", label: "Memory", sortable: true },
-    { key: "uptime", label: "Uptime", sortable: true },
+    {
+        key: "cpu",
+        label: "CPU",
+        sortable: true,
+        fun: sortByNumericField("cpu"),
+    },
+    {
+        key: "memory",
+        label: "Memory",
+        sortable: true,
+        fun: sortByNumericField("memory"),
+    },
+    { key: "uptime", label: "Uptime", sortable: true, fun: sotrByUptime() },
     { key: "alerts", label: "Alerts", sortable: false },
 ];
 
@@ -26,6 +41,7 @@ const icons = {
 };
 
 const ServerTable = () => {
+    const dispatch = useDispatch();
     const virtualMachines = useSelector((state) => state.vm.virtualMachines);
 
     const gbToGib = (gb) => {
@@ -63,12 +79,13 @@ const ServerTable = () => {
                     {columns.map((col) => (
                         <th key={col.key}>
                             {col.sortable ? (
-                                <div
-                                    className={styles.wrapper}
-                                    onClick={() => handleSort(col.key)}
-                                >
+                                <div className={styles.wrapper}>
                                     <span>{col.label}</span>
-                                    <img src={Arrows} alt="arrows" />
+                                    <img
+                                        src={Arrows}
+                                        alt="arrows"
+                                        onClick={() => dispatch(col.fun)}
+                                    />
                                 </div>
                             ) : (
                                 col.label
