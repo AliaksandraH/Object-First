@@ -9,9 +9,6 @@ import {
     Area,
 } from "recharts";
 import ChevronDown from "/images/chevron_down.svg";
-import styles from "./Trend.module.css";
-
-const { wrapper, header, title, period } = styles;
 
 const Trend = () => {
     const virtualMachines = useSelector((state) => state.vm.virtualMachines);
@@ -26,50 +23,54 @@ const Trend = () => {
                 })),
         [virtualMachines]
     );
+
     return (
-        <section className={wrapper}>
-            <div className={header}>
-                <p className={title}>Trend</p>
-                <div className={period}>
+        <section className="h-full flex flex-col justify-center flex-1 bg-white rounded-2xl">
+            <div className="flex justify-between items-center pt-6 px-6">
+                <p className="font-bold">Trend</p>
+                <div className="flex items-center justify-center gap-1 text-sm cursor-pointer">
                     <p>Last 14 days</p>
                     <img src={ChevronDown} alt="chevron down" />
                 </div>
             </div>
-            <AreaChart
-                width={744}
-                height={240}
-                data={data}
-                margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-            >
-                <defs>
-                    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                        <stop
-                            offset="5%"
-                            stopColor="#8884d8"
-                            stopOpacity={0.8}
-                        />
-                        <stop
-                            offset="95%"
-                            stopColor="#8884d8"
-                            stopOpacity={0}
-                        />
-                    </linearGradient>
-                </defs>
-                <XAxis
-                    dataKey="name"
-                    tickFormatter={(value) => `${value}СPU`}
-                />
-                <YAxis tickFormatter={(value) => `${value}GB`} />
-                <CartesianGrid strokeDasharray="1 0" />
-                <Tooltip />
-                <Area
-                    type="monotone"
-                    dataKey="uv"
-                    stroke="#8884d8"
-                    fillOpacity={1}
-                    fill="url(#colorUv)"
-                />
-            </AreaChart>
+            <div className="flex justify-center">
+                <AreaChart width={700} height={240} data={data}>
+                    <defs>
+                        <linearGradient
+                            id="colorUv"
+                            x1="0"
+                            y1="0"
+                            x2="0"
+                            y2="1"
+                        >
+                            <stop
+                                offset="5%"
+                                stopColor="#5F3196"
+                                stopOpacity={0.3}
+                            />
+                            <stop
+                                offset="95%"
+                                stopColor="#5F3196"
+                                stopOpacity={0}
+                            />
+                        </linearGradient>
+                    </defs>
+                    <XAxis
+                        dataKey="name"
+                        tickFormatter={(value) => `${value}СPU`}
+                    />
+                    <YAxis tickFormatter={(value) => `${value}GB`} />
+                    <CartesianGrid strokeDasharray="1 0" />
+                    <Tooltip />
+                    <Area
+                        type="monotone"
+                        dataKey="uv"
+                        stroke="#5F3196"
+                        fillOpacity={1}
+                        fill="url(#colorUv)"
+                    />
+                </AreaChart>
+            </div>
         </section>
     );
 };

@@ -25,36 +25,17 @@ input {
     font-family: "Roboto", sans-serif;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 4px 8px 4px 24px;
-}
-
 .title {
     color: #705289;
     font-weight: 500;
-    font-style: Medium;
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.1px;
 }
 
-.closeButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.closeButton img {
-    width: 24px;
-    height: 24px;
-}
-
 .content {
     width: 100%;
-    height: calc(100% - 37px);
+    height: calc(100% - 32px);
     display: flex;
     justify-content: space-between;
     align-items: center;

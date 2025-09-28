@@ -2,9 +2,7 @@ import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { PieChart, Pie, Cell, Legend, Label } from "recharts";
 import CustomChartLabel from "../CustomChartLabel/CustomChartLabel";
-import styles from "./State.module.css";
 
-const { wrapper, title, legendValue, legendName } = styles;
 const COLORS = ["#DC3545", "#459E74"];
 
 function State() {
@@ -24,50 +22,51 @@ function State() {
     }, [virtualMachines]);
 
     return (
-        <section className={wrapper}>
-            <p className={title}>State</p>
-            <PieChart width={320} height={240}>
-                <Pie
-                    data={data}
-                    dataKey="value"
-                    nameKey="name"
-                    innerRadius={60}
-                    outerRadius={85}
-                >
-                    {data.map((entry, idx) => (
-                        <Cell
-                            key={entry.name}
-                            fill={
-                                data[0].value === data[1].value
-                                    ? COLORS[idx]
-                                    : entry.value ===
-                                      Math.min(...data.map((d) => d.value))
-                                    ? COLORS[0]
-                                    : COLORS[1]
-                            }
-                        />
-                    ))}
-                    <Label
-                        content={<CustomChartLabel data={data} />}
-                        align="center"
+        <section className="w-[440px] h-[300px] bg-white rounded-2xl flex flex-col justify-center pt-6 px-6">
+            <p className="font-bold">State</p>
+            <div className="w-full flex justify-center">
+                <PieChart width={320} height={240}>
+                    <Pie
+                        data={data}
+                        dataKey="value"
+                        nameKey="name"
+                        innerRadius={60}
+                        outerRadius={85}
+                    >
+                        {data.map((entry, idx) => (
+                            <Cell
+                                key={entry.name}
+                                fill={
+                                    data[0].value === data[1].value
+                                        ? COLORS[idx]
+                                        : entry.value ===
+                                          Math.min(...data.map((d) => d.value))
+                                        ? COLORS[0]
+                                        : COLORS[1]
+                                }
+                            />
+                        ))}
+                        <Label content={<CustomChartLabel data={data} />} />
+                    </Pie>
+                    <Legend
+                        layout="vertical"
+                        align="right"
+                        verticalAlign="middle"
+                        iconType="circle"
+                        iconSize={10}
+                        formatter={(value, entry) => (
+                            <>
+                                <span className="font-bold text-[#212529]">
+                                    {entry.payload.value}
+                                </span>
+                                <span className="text-[#212529] ml-2">
+                                    {value}
+                                </span>
+                            </>
+                        )}
                     />
-                </Pie>
-                <Legend
-                    layout="vertical"
-                    align="right"
-                    verticalAlign="middle"
-                    iconType="circle"
-                    iconSize={10}
-                    formatter={(value, entry) => (
-                        <>
-                            <span className={legendValue}>
-                                {entry.payload.value}
-                            </span>
-                            <span className={legendName}>{value}</span>
-                        </>
-                    )}
-                />
-            </PieChart>
+                </PieChart>
+            </div>
         </section>
     );
 }

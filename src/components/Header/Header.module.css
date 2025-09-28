@@ -1,49 +1,18 @@
 .header {
     min-width: 1280px;
+    height: 71px;
     background-color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 23px 40px;
-}
-
-.logo {
-    width: 80px;
-    height: 24px;
-}
-
-.navLinks {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
+    box-sizing: border-box;
 }
 
 .activeLink {
     color: #212529;
     font-weight: 700;
-    font-style: Bold;
     border-bottom: 2px solid #212529;
-}
-
-.navBarBtns {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-}
-
-.notificationsBtn {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-}
-
-.avatarBtn {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    cursor: pointer;
 }
 
 .link {

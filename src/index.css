@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
@@ -24,6 +26,7 @@ body {
     padding: 0;
     font-family: "Manrope", sans-serif;
     color-scheme: light;
+    color: #212529;
 }
 
 p {
@@ -39,4 +42,10 @@ h5,
 h6 {
     margin: 0;
     padding: 0;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
 }

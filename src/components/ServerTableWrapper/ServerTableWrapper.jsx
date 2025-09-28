@@ -9,10 +9,10 @@ const ServerTableWrapper = () => {
     const virtualMachines = useSelector((state) => state.vm.virtualMachines);
 
     return (
-        <section className={styles.vmContainer}>
-            <div className={styles.vmHeader}>
-                <div className={styles.vmInfo}>
-                    <h1>Virtual machines</h1>
+        <section className="w-full flex flex-col gap-6">
+            <div className="w-full flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                    <h1 className="font-bold text-xl">Virtual machines</h1>
                     <div className={styles.vmCount}>
                         {virtualMachines.length}
                     </div>

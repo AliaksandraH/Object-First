@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import InputField from "../InputField/InputField";
 import RamSlider from "../RamSlider/RamSlider";
 import modalStyles from "../CreateVmModal/Modal.module.css";
-import styles from "./VmResourcesForm.module.css";
 
 const VmResourcesForm = ({
     cpu,
@@ -55,14 +54,18 @@ const VmResourcesForm = ({
                     hint="Enter number of processors up to 12"
                     errorText="Number of processors must be up to 12"
                 />
-                <div className={styles.checkbox}>
+                <div className="flex items-center gap-1">
                     <input
                         type="checkbox"
                         id="checkbox"
                         checked={isEnabledCpu}
                         onChange={() => setIsEnabledCpu((prev) => !prev)}
+                        className="accent-[#5f3196] cursor-pointer h-4 w-4"
                     />
-                    <label htmlFor="checkbox">
+                    <label
+                        htmlFor="checkbox"
+                        className="text-[#1e1a20] text-sm"
+                    >
                         Enable virtualized CPU performance counters
                     </label>
                 </div>

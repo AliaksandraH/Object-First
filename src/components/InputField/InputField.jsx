@@ -26,7 +26,7 @@ const InputField = ({
     };
 
     return (
-        <div className={styles.field}>
+        <div className="flex flex-col">
             <div
                 className={`${styles.inputWrapper} ${
                     focused ? styles.focused : ""

@@ -4,7 +4,7 @@ import styles from "./WarningModal.module.css";
 const WarningModal = ({ setIsShowWarning, onCloseModal }) => {
     return (
         <div className={styles.wrapper}>
-            <img src={ErrorImg} alt="Error" className={styles.icon} />
+            <img src={ErrorImg} alt="Error" className="w-6 h-6" />
             <h2 className={styles.title}>Cancel creating?</h2>
             <p className={styles.text}>
                 You have unsaved changes that will be lost. Do you want to

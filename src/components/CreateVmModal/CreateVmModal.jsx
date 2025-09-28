@@ -149,13 +149,14 @@ const CreateVmModal = () => {
                         onCloseModal={onCloseModal}
                     />
                 )}
-                <header className={styles.header}>
+                <header className="w-full flex items-center justify-between pl-6 pr-2 py-1">
                     <p className={styles.title}>New virtual machine</p>
-                    <button
-                        className={styles.closeButton}
-                        onClick={onShowWarningModal}
-                    >
-                        <img src={ToggleableImg} alt="close" />
+                    <button onClick={onShowWarningModal}>
+                        <img
+                            src={ToggleableImg}
+                            alt="close"
+                            className="w-6 h-6"
+                        />
                     </button>
                 </header>
                 <div className={styles.content}>

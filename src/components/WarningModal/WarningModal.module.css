@@ -14,11 +14,6 @@
     z-index: 9999;
 }
 
-.icon {
-    width: 24px;
-    height: 24px;
-}
-
 .title {
     color: #1e1a20;
     font-size: 24px;
@@ -50,18 +45,13 @@
     color: #fff;
     border-radius: 100px;
     font-size: 14px;
-    font-weight: bold;
-    border: none;
+    font-weight: 500;
     padding: 15px 30px;
-    cursor: pointer;
 }
 
 .cancelBtn {
-    background: none;
     color: #1e1a20;
     font-size: 14px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
+    font-weight: 500;
     padding: 10px 24px;
 }

@@ -8,8 +8,8 @@ import styles from "./Header.module.css";
 const Header = () => {
     return (
         <header className={styles.header}>
-            <img src={Logo} alt="logo" className={styles.logo} />
-            <nav className={styles.navLinks}>
+            <img src={Logo} alt="logo" className="w-20 h-6" />
+            <nav className="flex justify-center items-center gap-2">
                 <NavLink
                     to="/"
                     className={({ isActive }) =>
@@ -38,13 +38,13 @@ const Header = () => {
                     <img src={Vector} alt="vector" />
                 </NavLink>
             </nav>
-            <section className={styles.navBarBtns}>
+            <section className="flex items-center justify-center gap-6">
                 <img
                     src={Notifications}
                     alt="notifications"
-                    className={styles.notificationsBtn}
+                    className="w-6 h-6"
                 />
-                <img src={Avatar} alt="avatar" className={styles.avatarBtn} />
+                <img src={Avatar} alt="avatar" className="w-8 h-8" />
             </section>
         </header>
     );
